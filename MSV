@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+int r[100010],g[1000010],b[1000010];
+int main()
+{
+   
+
+    int test;
+    cin>>test;
+    while(test--)
+    {
+        int n;
+        cin>>n;
+
+        memset(g,0,sizeof(g));
+        memset(b,0,sizeof(b));
+        int max=0,final=0;
+        for(int i=0;i<n;i++)
+        {
+            cin>>r[i];
+            g[r[i]]++;
+            if(max<r[i])
+                max=r[i];
+        }
+        for(int i=n-1;i>=0;i--)
+        {
+            int p=r[i],cnt=0;
+        g[r[i]]--;
+            if(r[i]!=1)
+            {
+                while(p<(max+1))
+                {
+                    if(g[p]!=0)
+                      {
+            
+
+                        cnt+=(g[p]-b[p]);
+                      }
+                    p+=r[i];
+
+
+
+                }
+            }
+
+            else
+            cnt=i;
+              g[r[i]]++;
+            b[r[i]]++;
+            if(cnt>final)
+                final=cnt;
+          
+            if(final>=i)
+                break;
+
+
+        }
+        cout<<final<<endl;
+
+    }
+}
